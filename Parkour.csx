@@ -22,7 +22,7 @@ public class Parkour : Gamemode
 	public override void _Ready()
 	{
 		if(Net.Work.IsNetworkServer())
-			Net.SteelRpc(Scripting.Self, nameof(Scripting.RequestGmLoad), "Parkour");
+			Net.SteelRpc(Scripting.Self, nameof(Scripting.RequestGmLoad), Name);
 
 		Game.PossessedPlayer.HUDInstance.AddChild(AlertLabel);
 
@@ -44,7 +44,7 @@ public class Parkour : Gamemode
 	public override void OnPlayerConnect(int Id)
 	{
 		if(Net.Work.IsNetworkServer())
-			Scripting.Self.RpcId(Id, nameof(Scripting.RequestGmLoad), "Parkour");
+			Scripting.Self.RpcId(Id, nameof(Scripting.RequestGmLoad), Name);
 	}
 
 
